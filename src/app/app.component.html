@@ -1,0 +1,61 @@
+<div class="heading">
+  Welcome to Hangman
+</div>
+
+<div class="image-container">
+  <img [src]="imageSource">
+  </div>
+<div>
+  <div class="list-class">
+    <ul>
+      <li *ngFor="let item of dummContent">
+        <div *ngIf="item ==='-'">
+         <h2>_</h2> 
+        </div>
+        <div *ngIf="item !=='-'">
+         <h2>{{item}}</h2> 
+        </div>
+      </li>
+    </ul>
+  </div>
+  
+</div>
+<div class="hint-input">
+
+
+<div class="hint-class">
+  
+      Hint: {{typeFromList}}<br>
+      Misses :{{missedString}}
+  
+ 
+   
+ 
+
+</div>
+
+<div class="input-field"> 
+  <input required [(ngModel)]="choice" placeholder="Please enter your guess.." name="input" minlength="1" maxlength="1"  type="text"  (keyUp.enter)="displayGuesses()">
+</div>
+</div>
+<div class="same-input">
+  <h3>
+      <div *ngIf="displaySameCharmsg">You have previously guessed this character please guess a new one</div>
+      <div *ngIf="provideChar">Please provide a valid input</div>
+  </h3>
+
+  
+
+</div>
+<div [ngClass]="{'backDrop':gameOver }" (click)="closeBackdrop()">
+<div  [ngClass]="{'gameOverClass':gameOver }" *ngIf="gameOver">
+  <div [ngClass]="{'gameOverText':gameOver}" *ngIf="!gameWon">
+      <h2 style="color:red;"><p>GAME OVER!!! You Lost</p></h2>
+  </div>
+
+  <div [ngClass]="{'gameOverText':gameOver}" *ngIf="gameWon">
+      <h2 style="color:rgb(0, 255, 13);"><p>Congradulations!!! You Won</p></h2>
+  </div>
+  
+</div>
+</div>
