@@ -1,11 +1,12 @@
 <div class="heading">
   Welcome to Hangman
 </div>
-
+<!-- Image container to display images to the center -->
 <div class="image-container">
   <img [src]="imageSource">
   </div>
 <div>
+<!-- Displaying the characters present in the question based on the guess -->
   <div class="list-class">
     <ul>
       <li *ngFor="let item of dummContent">
@@ -20,6 +21,7 @@
   </div>
   
 </div>
+<!-- Displaying the iput field and the hint given to the user along with the list of characters the user missed-->
 <div class="hint-input">
 
 
@@ -47,6 +49,8 @@
   
 
 </div>
+
+<!-- Backdrop to display if user has won or lost -->
 <div [ngClass]="{'backDrop':gameOver }" (click)="closeBackdrop()">
 <div  [ngClass]="{'gameOverClass':gameOver }" *ngIf="gameOver">
   <div [ngClass]="{'gameOverText':gameOver}" *ngIf="!gameWon">

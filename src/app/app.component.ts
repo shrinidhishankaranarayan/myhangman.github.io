@@ -18,6 +18,7 @@ export class AppComponent implements OnInit {
 
   ]
   private imageSource =this.imageSourcesList[0];
+  //object with Qestion and Hint
   guesses=[
     {name:"Rambo",
     type:"Movie"},
@@ -30,7 +31,7 @@ export class AppComponent implements OnInit {
       type:"Girls Name"
     }
   ];
-  //To be added in object
+
   private randomWord;
   private dummContent:any=[];
   private nameFromList;
@@ -49,7 +50,7 @@ export class AppComponent implements OnInit {
   ngOnInit(){
     this.initialize()
   }
- 
+ //Function to initialize on page load
   initialize(){
 
     this.randomWord =this.guesses[Math.floor(Math.random()*this.guesses.length)];
@@ -62,10 +63,12 @@ export class AppComponent implements OnInit {
 
   }
   
+  //Function to display the characters based on guess
   displayGuesses(){
 
     if(this.choice){
       this.provideChar=false;
+      //If the user guess is part of the Question
       if((this.nameStringArray.includes(this.choice) || this.nameStringArray.includes(this.choice.toUpperCase()))&&
     !this.dummContent.includes(this.choice.toUpperCase())){
         console.log(this.choice);
@@ -85,7 +88,7 @@ export class AppComponent implements OnInit {
     
         }
         this.choice='';
-  
+        //To check if user has guessed all the characters in the question
         if(! (this.dummContent.includes('-'))){
           this.gameOver=true;
           this.gameWon=true;
@@ -97,6 +100,7 @@ export class AppComponent implements OnInit {
 
 
     else{
+      //To check for wrong guess and display accordingly
       if(this.dummContent.includes(this.choice.toUpperCase()) || this.missedList.includes(this.choice)){
         console.log('Character already guessed');
         this.displaySameCharmsg=true;
